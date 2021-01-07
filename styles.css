@@ -11,6 +11,7 @@ body.light {
 body {
     background-color: var(--background);
     color: var(--foreground);
+    font-family: sans-serif;
     margin: 0;
 }
 
