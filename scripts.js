@@ -15,32 +15,6 @@ if (!localStorage.getItem("visited")) {
 // Focus the editor
 $("#editor").focus();
 
-$(".form-input input").each(function() {
-    if ($(this).val() !== "") {
-        $("#"+this.id+" + label").animate({
-            "fontSize": "0.8rem",
-            "top": "-0.8rem",
-            "padding": "0.25rem"
-        }, 80);
-    }
-    $(this).focusin(() => {
-        $("#"+this.id+" + label").animate({
-            "fontSize": "0.8rem",
-            "top": "-0.8rem",
-            "padding": "0.25rem"
-        }, 80);
-    });
-    $(this).focusout(function() {
-        if ($(this).val() === "") {
-            $("#"+this.id+" + label").animate({
-                "fontSize": "1rem",
-                "top": ".5rem",
-                "padding": 0
-            }, 80);
-        }
-    });
-});
-
 $(document).keydown(e => {
     if (e.ctrlKey && e.key === "d") {
         e.preventDefault();
@@ -71,3 +45,29 @@ $("#settings").submit(e => {
     localStorage.setItem("font", $("#font").val());
     $("#editor").css("fontFamily", $("#font").val());
 })
+
+$(".form-input input").each(function() {
+    if ($(this).val() !== "") {
+        $("#"+this.id+" + label").animate({
+            "fontSize": "0.8rem",
+            "top": "-0.8rem",
+            "padding": "0.25rem"
+        }, 80);
+    }
+    $(this).focusin(() => {
+        $("#"+this.id+" + label").animate({
+            "fontSize": "0.8rem",
+            "top": "-0.8rem",
+            "padding": "0.25rem"
+        }, 80);
+    });
+    $(this).focusout(function() {
+        if ($(this).val() === "") {
+            $("#"+this.id+" + label").animate({
+                "fontSize": "1rem",
+                "top": ".5rem",
+                "padding": 0
+            }, 80);
+        }
+    });
+});
