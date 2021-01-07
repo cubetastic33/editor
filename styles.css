@@ -38,6 +38,15 @@ dialog h2 {
     font-weight: 450;
 }
 
+#overlay {
+    background-color: #00000044;
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+}
+
 #editor {
     flex-grow: 1;
     font-size: 1.2em;

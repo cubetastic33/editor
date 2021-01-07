@@ -15,7 +15,7 @@ if (!localStorage.getItem("visited")) {
 // Focus the editor
 $("#editor").focus();
 
-$(document).keydown(e => {
+$(window).keydown(e => {
     if (e.ctrlKey && e.key === "d") {
         e.preventDefault();
         // Toggle theme
@@ -30,8 +30,15 @@ $(document).keydown(e => {
         e.preventDefault();
         // Toggle menu visibility
         $(".help").toggle();
-        localStorage.setItem("visited", true);
-        $("#editor").focus();
+        if ($(".help").is(":visible")) {
+            $("#editor").attr("contenteditable", false);
+            $("#overlay").show();
+        } else {
+            localStorage.setItem("visited", true);
+            $("#editor").attr("contenteditable", true);
+            $("#overlay").hide();
+            $("#editor").focus();
+        }
     }
 });
 
