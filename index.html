@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="dark">
+    <div id="editor" contenteditable></div>
+    <dialog class="help">
+        <h1>Welcome to Editor</h1>
+        <p>An ultra-minimalistic text editor that runs in the browser</p>
+        <p class="hint">You can also paste or drag-and-drop images</p>
+        <h2>Keybinds</h2>
+        <p><b>F1</b>: Toggle menu</p>
+        <p><b>ctrl</b> + <b>d</b>: Toggle dark theme</p>
+        <h2>Settings</h2>
+        <form id="settings">
+            <p class="hint">Hint: Try monospace or serif for the browser's default monospace/serif fonts</p>
+            <div class="form-input">
+                <input id="font" type="text">
+                <label for="font">Editor Font</label>
+            </div>
+        </form>
+    </dialog>
+</body>
+<script src="jquery-3.5.1.min.js"></script>
+<script src="scripts.js"></script>
+</html>
