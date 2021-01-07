@@ -52,7 +52,8 @@ $(document).keydown(e => {
         // Don't unfocus the editor when escape or tab are pressed
         e.preventDefault();
         $("#editor").focus();
-    } else if (e.key === "F1") {
+    } else if (e.key === "F1" || e.ctrlKey && e.key === "m") {
+        e.preventDefault();
         // Toggle menu visibility
         $(".help").toggle();
         localStorage.setItem("visited", true);
