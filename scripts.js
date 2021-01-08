@@ -78,3 +78,44 @@ $(".form-input input").each(function() {
         }
     });
 });
+
+// Save
+
+// Credit: stackoverflow
+function setEndOfContenteditable(contentEditableElement) {
+    var range,selection;
+    if(document.createRange) {
+        // Firefox, Chrome, Opera, Safari, IE 9+
+        // Create a range (a range is a like the selection but invisible)
+        range = document.createRange();
+        // Select the entire contents of the element with the range
+        range.selectNodeContents(contentEditableElement);
+        // Collapse the range to the end point. false means collapse to end rather than the start
+        range.collapse(false);
+        // Get the selection object (allows you to change selection)
+        selection = window.getSelection();
+        // Remove any selections already made
+        selection.removeAllRanges();
+        // Make the range you have just created the visible selection
+        selection.addRange(range);
+    } else if(document.selection)    { 
+        // IE 8 and lower
+        // Create a range (a range is a like the selection but invisible)
+        range = document.body.createTextRange();
+        // Select the entire contents of the element with the range
+        range.moveToElementText(contentEditableElement);
+        // Collapse the range to the end point. false means collapse to end rather than the start
+        range.collapse(false);
+        // Select the range (make it the visible selection
+        range.select();
+    }
+}
+
+$("#editor").html(localStorage.getItem("content"));
+
+setEndOfContenteditable($("#editor")[0]);
+$(window).scrollTop(document.body.scrollHeight);
+
+setInterval(() => {
+    localStorage.setItem("content", $("#editor").html());
+}, 2000);
