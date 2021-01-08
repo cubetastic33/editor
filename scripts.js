@@ -26,7 +26,7 @@ $(window).keydown(e => {
         // Don't unfocus the editor when escape or tab are pressed
         e.preventDefault();
         $("#editor").focus();
-    } else if (e.key === "F1" || e.ctrlKey && e.key === "m") {
+    } else if (e.key === "F1" || e.ctrlKey && e.key === ",") {
         e.preventDefault();
         // Toggle menu visibility
         $(".help").toggle();
