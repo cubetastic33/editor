@@ -6,14 +6,17 @@ if (!localStorage.getItem("theme")) {
 // Load the theme
 $("body").attr("class", localStorage.getItem("theme"));
 
+// Focus the editor
+$("#editor").focus();
+
 if (!localStorage.getItem("visited")) {
     // Show the menu if it has never been closed before
     // (usually when the site is visited for the first time)
-    $(".help").css("display", "block");
+    $(".help").show();
+    // Disable the editor
+    $("#editor").attr("contenteditable", false);
+    $("#overlay").show();
 }
-
-// Focus the editor
-$("#editor").focus();
 
 $(window).keydown(e => {
     if (e.ctrlKey && e.key === "d") {
@@ -31,9 +34,11 @@ $(window).keydown(e => {
         // Toggle menu visibility
         $(".help").toggle();
         if ($(".help").is(":visible")) {
+            // The menu was toggled on, so disable the editor
             $("#editor").attr("contenteditable", false);
             $("#overlay").show();
         } else {
+            // The menu was toggled off, so enable the editor
             localStorage.setItem("visited", true);
             $("#editor").attr("contenteditable", true);
             $("#overlay").hide();
@@ -98,7 +103,7 @@ function setEndOfContenteditable(contentEditableElement) {
         selection.removeAllRanges();
         // Make the range you have just created the visible selection
         selection.addRange(range);
-    } else if(document.selection)    { 
+    } else if(document.selection) {
         // IE 8 and lower
         // Create a range (a range is a like the selection but invisible)
         range = document.body.createTextRange();
