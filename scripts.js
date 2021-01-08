@@ -1,11 +1,3 @@
-if (!localStorage.getItem("theme")) {
-    // Default theme is dark
-    localStorage.setItem("theme", "dark");
-}
-
-// Load the theme
-$("body").attr("class", localStorage.getItem("theme"));
-
 // Focus the editor
 $("#editor").focus();
 
