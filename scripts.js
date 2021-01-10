@@ -122,5 +122,11 @@ setEndOfContenteditable($("#editor")[0]);
 $(window).scrollTop(document.body.scrollHeight);
 
 setInterval(() => {
-    localStorage.setItem("content", $("#editor").html());
+    if ($("#editor").html() === "<br>") {
+        // Fixes a bug on firefox where deleting all text then reloading and typing would start
+        // after a newline
+        localStorage.removeItem("content");
+    } else {
+        localStorage.setItem("content", $("#editor").html());
+    }
 }, 2000);
