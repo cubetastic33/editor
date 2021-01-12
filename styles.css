@@ -25,6 +25,7 @@ dialog {
     max-height: 75vh;
     max-width: 65vw;
     overflow: auto;
+    padding: 1em;
     position: fixed;
     left: 50vw;
     top: 50vh;
