@@ -18,6 +18,16 @@ if (!localStorage.getItem("visited")) {
     $("#overlay").show();
 }
 
+function close_menu() {
+    // Hide the menu
+    $(".help").hide();
+    // Enable the editor
+    localStorage.setItem("visited", true);
+    $("#editor").attr("contenteditable", true);
+    $("#overlay").hide();
+    $("#editor").focus();
+}
+
 $(window).keydown(e => {
     if (e.ctrlKey && e.key === "d") {
         e.preventDefault();
@@ -44,8 +54,13 @@ $(window).keydown(e => {
             $("#overlay").hide();
             $("#editor").focus();
         }
+    } else if (e.key === "Escape" && $(".help").is(":visible")) {
+        e.preventDefault();
+        close_menu();
     }
 });
+
+$("#overlay").click(close_menu);
 
 // Settings
 $("#font").val(localStorage.getItem("font"));
