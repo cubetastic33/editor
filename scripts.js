@@ -67,7 +67,6 @@ $("#font").val(localStorage.getItem("font"));
 $("#editor").css("fontFamily", localStorage.getItem("font"));
 
 $("#settings").submit(e => {
-    console.log("fejoiwfjew");
     e.preventDefault();
     localStorage.setItem("font", $("#font").val());
     $("#editor").css("fontFamily", $("#font").val());
