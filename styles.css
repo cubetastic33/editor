@@ -74,11 +74,7 @@ form {
     margin-bottom: .5em;
 }
 
-.form-input {
-    position: relative;
-}
-
-.form-input input {
+input {
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -86,32 +82,20 @@ form {
     border: 1pt solid var(--foreground);
     border-radius: 4px;
     color: var(--foreground);
-    padding: .5rem calc(1rem + 1px);
-    width: calc(100% - 2rem - 2px);
+    font-size: .9rem;
+    padding: .5rem calc(1em + 1px);
+    width: calc(100% - 2em - 2px);
 }
 
-.form-input label {
-    background-color: var(--background);
-    color: var(--foreground);
-    cursor: text;
-    position: absolute;
-    top: .5rem;
-    left: 1rem;
-}
-
-.form-input input:hover, .form-input select:hover {
+input:hover {
     border-color: #afafaf;
 }
 
-.form-input input:focus, .form-input select:focus {
+input:focus {
     border: 2px solid #00C853;
     caret-color: #00C853;
     color: var(--foreground);
     outline: none;
     outline-offset: 0;
-    padding: calc(.5rem - 1px) 1rem;
-}
-
-.form-input input:focus + label, .form-input select:focus + label {
-    color: #00C853;
+    padding: calc(.5rem - 1px) 1em;
 }

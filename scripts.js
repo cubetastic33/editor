@@ -4,99 +4,76 @@ if (!localStorage.getItem("theme")) {
 }
 
 // Load the theme
-$("body").attr("class", localStorage.getItem("theme"));
+document.querySelector("body").className = localStorage.getItem("theme");
 
 // Focus the editor
-$("#editor").focus();
+document.querySelector("#editor").focus();
 
 if (!localStorage.getItem("visited")) {
     // Show the menu if it has never been closed before
     // (usually when the site is visited for the first time)
-    $(".help").show();
+    document.querySelector(".help").style.display = "block";
     // Disable the editor
-    $("#editor").attr("contenteditable", false);
-    $("#overlay").show();
+    document.querySelector("#editor").contentEditable = false;
+    document.querySelector("#overlay").style.display = "block";
 }
 
 function close_menu() {
     // Hide the menu
-    $(".help").hide();
+    document.querySelector(".help").style.display = "none";
     // Enable the editor
     localStorage.setItem("visited", true);
-    $("#editor").attr("contenteditable", true);
-    $("#overlay").hide();
-    $("#editor").focus();
+    document.querySelector("#editor").contentEditable = true;
+    document.querySelector("#overlay").style.display = "none";
+    document.querySelector("#editor").focus();
 }
 
-$(window).keydown(e => {
+window.addEventListener("keydown", e => {
     if (e.ctrlKey && e.key === "d") {
         e.preventDefault();
         // Toggle theme
         let new_theme = localStorage.getItem("theme") === "dark" ? "light" : "dark";
         localStorage.setItem("theme", new_theme);
-        $("body").attr("class", new_theme);
+        document.body.className = new_theme;
     } else if (e.key === "Escape" || e.key === "Tab") {
         // Don't unfocus the editor when escape or tab are pressed
-        e.preventDefault();
-        $("#editor").focus();
+        document.querySelector("#editor").focus();
     } else if (e.key === "F1" || e.ctrlKey && e.key === ",") {
         e.preventDefault();
         // Toggle menu visibility
-        $(".help").toggle();
-        if ($(".help").is(":visible")) {
+        if (document.querySelector(".help").style.display === "block") {
+            document.querySelector(".help").style.display = "none";
+        } else {
+            document.querySelector(".help").style.display = "block";
+        }
+        console.log(document.querySelector(".help").style.display);
+        if (document.querySelector(".help").style.display === "block") {
             // The menu was toggled on, so disable the editor
-            $("#editor").attr("contenteditable", false);
-            $("#overlay").show();
+            document.querySelector("#editor").contentEditable = false;
+            document.querySelector("#overlay").style.display = "block";
         } else {
             // The menu was toggled off, so enable the editor
             localStorage.setItem("visited", true);
-            $("#editor").attr("contenteditable", true);
-            $("#overlay").hide();
-            $("#editor").focus();
+            document.querySelector("#editor").contentEditable = true;
+            document.querySelector("#overlay").style.display = "none";
+            document.querySelector("#editor").focus();
         }
-    } else if (e.key === "Escape" && $(".help").is(":visible")) {
+    } else if (e.key === "Escape" && document.querySelector(".help").style.display === "block") {
         e.preventDefault();
         close_menu();
     }
 });
 
-$("#overlay").click(close_menu);
+document.querySelector("#overlay").addEventListener("click", close_menu);
 
 // Settings
-$("#font").val(localStorage.getItem("font"));
-$("#editor").css("fontFamily", localStorage.getItem("font"));
+document.querySelector("#font").value = localStorage.getItem("font");
+document.querySelector("#editor").style.fontFamily = localStorage.getItem("font");
 
-$("#settings").submit(e => {
-    console.log("fejoiwfjew");
+document.querySelector("#settings").addEventListener("submit", e => {
     e.preventDefault();
-    localStorage.setItem("font", $("#font").val());
-    $("#editor").css("fontFamily", $("#font").val());
-})
-
-$(".form-input input").each(function() {
-    if ($(this).val() !== "") {
-        $("#"+this.id+" + label").animate({
-            "fontSize": "0.8rem",
-            "top": "-0.8rem",
-            "padding": "0.25rem"
-        }, 80);
-    }
-    $(this).focusin(() => {
-        $("#"+this.id+" + label").animate({
-            "fontSize": "0.8rem",
-            "top": "-0.8rem",
-            "padding": "0.25rem"
-        }, 80);
-    });
-    $(this).focusout(function() {
-        if ($(this).val() === "") {
-            $("#"+this.id+" + label").animate({
-                "fontSize": "1rem",
-                "top": ".5rem",
-                "padding": 0
-            }, 80);
-        }
-    });
+    localStorage.setItem("font", document.querySelector("#font").value);
+    document.querySelector("#editor").style.fontFamily = document.querySelector("#font").value;
 });
 
 // Save
@@ -131,17 +108,19 @@ function setEndOfContenteditable(contentEditableElement) {
     }
 }
 
-$("#editor").html(localStorage.getItem("content"));
+document.querySelector("#editor").innerHTML = localStorage.getItem("content");
 
-setEndOfContenteditable($("#editor")[0]);
-$(window).scrollTop(document.body.scrollHeight);
+// Set the cursor at the end of the editable div
+setEndOfContenteditable(document.querySelector("#editor"));
+// Scroll to the bottom of the window
+window.scrollTo(0, document.body.scrollHeight);
 
 setInterval(() => {
-    if ($("#editor").html() === "<br>") {
+    if (document.querySelector("#editor").innerHTML === "<br>") {
         // Fixes a bug on firefox where deleting all text then reloading and typing would start
         // after a newline
         localStorage.removeItem("content");
     } else {
-        localStorage.setItem("content", $("#editor").html());
+        localStorage.setItem("content", document.querySelector("#editor").innerHTML);
     }
 }, 2000);
