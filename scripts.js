@@ -15,13 +15,6 @@ if (!localStorage.getItem('visited')) {
   document.querySelector('#help').showModal();
 }
 
-function close_menu() {
-  // Hide the menu
-  document.querySelector('#help').close();
-  // Don't show the menu next time
-  localStorage.setItem('visited', 'true');
-}
-
 window.addEventListener('keydown', e => {
   if (e.ctrlKey && e.key === 'd') {
     e.preventDefault();
@@ -35,11 +28,14 @@ window.addEventListener('keydown', e => {
   } else if (e.key === 'F1' || e.ctrlKey && e.key === ',') {
     e.preventDefault();
     // Toggle menu visibility
-    if (document.querySelector('#help').open) close_menu();
-    else document.querySelector('#help').showModal();
-  } else if (e.key === 'Escape' && document.querySelector('#help').open) {
-    e.preventDefault();
-    close_menu();
+    if (document.querySelector('#help').open) {
+      // Close the menu
+      document.querySelector('#help').close();
+      // Don't show the menu on startup
+      localStorage.setItem('visited', 'true');
+    } else {
+      document.querySelector('#help').showModal();
+    }
   }
 });
 
