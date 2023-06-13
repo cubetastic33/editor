@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="An ultra-minimalistic text editor that runs in the browser">
-    <title>Editor</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="shortcut icon" href="editor.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An ultra-minimalistic text editor that runs in the browser">
+  <title>Editor</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="shortcut icon" href="editor.png">
 </head>
 <body class="dark">
-    <div id="editor" contenteditable></div>
-    <div id="overlay"></div>
-    <dialog class="help">
-        <h1>Welcome to Editor</h1>
-        <p>
-            An ultra-minimalistic text editor that runs in the browser. What you type is autosaved
-            to localStorage every 2 seconds, so they'll persist even if you close the tab or refresh
-            the page.
-        </p>
-        <p class="hint">You can also paste or drag-and-drop images on firefox</p>
-        <h2>Keybinds</h2>
-        <p><b>F1</b> <i>or</i> <b>ctrl</b> + <b>,</b>: Toggle this menu</p>
-        <p><b>ctrl</b> + <b>d</b>: Toggle dark theme</p>
-        <h2>Settings</h2>
-        <form id="settings">
-            <p class="hint">Hint: Try monospace or serif for the browser's default monospace/serif fonts</p>
-            <input id="font" type="text" placeholder="Editor Font">
-        </form>
-    </dialog>
+<div id="editor" contenteditable></div>
+<div id="overlay"></div>
+<dialog class="help">
+  <h1>Welcome to Editor</h1>
+  <p>
+    An ultra-minimalistic text editor that runs in the browser. What you type is autosaved
+    to localStorage every 2 seconds, so they'll persist even if you close the tab or refresh
+    the page.
+  </p>
+  <p class="hint">You can also paste or drag-and-drop images on firefox</p>
+  <h2>Keybinds</h2>
+  <p><b>F1</b> <i>or</i> <b>ctrl</b> + <b>,</b>: Toggle this menu</p>
+  <p><b>ctrl</b> + <b>d</b>: Toggle dark theme</p>
+  <h2>Settings</h2>
+  <form id="settings">
+    <p class="hint">Hint: Try monospace or serif for the browser's default monospace/serif fonts</p>
+    <input id="font" type="text" placeholder="Editor Font">
+  </form>
+</dialog>
 </body>
 <script src="scripts.js"></script>
 </html>
