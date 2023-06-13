@@ -12,20 +12,14 @@ document.querySelector('#editor').focus();
 if (!localStorage.getItem('visited')) {
   // Show the menu if it has never been closed before
   // (usually when the site is visited for the first time)
-  document.querySelector('.help').style.display = 'block';
-  // Disable the editor
-  document.querySelector('#editor').contentEditable = false;
-  document.querySelector('#overlay').style.display = 'block';
+  document.querySelector('#help').showModal();
 }
 
 function close_menu() {
   // Hide the menu
-  document.querySelector('.help').style.display = 'none';
-  // Enable the editor
-  localStorage.setItem('visited', true);
-  document.querySelector('#editor').contentEditable = true;
-  document.querySelector('#overlay').style.display = 'none';
-  document.querySelector('#editor').focus();
+  document.querySelector('#help').close();
+  // Don't show the menu next time
+  localStorage.setItem('visited', 'true');
 }
 
 window.addEventListener('keydown', e => {
@@ -41,30 +35,13 @@ window.addEventListener('keydown', e => {
   } else if (e.key === 'F1' || e.ctrlKey && e.key === ',') {
     e.preventDefault();
     // Toggle menu visibility
-    if (document.querySelector('.help').style.display === 'block') {
-      document.querySelector('.help').style.display = 'none';
-    } else {
-      document.querySelector('.help').style.display = 'block';
-    }
-    console.log(document.querySelector('.help').style.display);
-    if (document.querySelector('.help').style.display === 'block') {
-      // The menu was toggled on, so disable the editor
-      document.querySelector('#editor').contentEditable = false;
-      document.querySelector('#overlay').style.display = 'block';
-    } else {
-      // The menu was toggled off, so enable the editor
-      localStorage.setItem('visited', true);
-      document.querySelector('#editor').contentEditable = true;
-      document.querySelector('#overlay').style.display = 'none';
-      document.querySelector('#editor').focus();
-    }
-  } else if (e.key === 'Escape' && document.querySelector('.help').style.display === 'block') {
+    if (document.querySelector('#help').open) close_menu();
+    else document.querySelector('#help').showModal();
+  } else if (e.key === 'Escape' && document.querySelector('#help').open) {
     e.preventDefault();
     close_menu();
   }
 });
-
-document.querySelector('#overlay').addEventListener('click', close_menu);
 
 // Settings
 document.querySelector('#font').value = localStorage.getItem('font');
