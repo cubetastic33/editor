@@ -1,0 +1,36 @@
+.icon {
+  height: 2rem;
+  vertical-align: middle;
+  margin-top: -.3rem;
+}
+
+.input-form {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+input {
+  appearance: none;
+  background: var(--background);
+  border: 1pt solid var(--foreground);
+  border-radius: 5px;
+  color: var(--foreground);
+  flex-grow: 1;
+  padding: .5rem calc(1em + 1px);
+}
+
+#login-button {
+  border: none;
+  border-radius: 5px;
+  display: block;
+  padding: .5rem 1.5rem;
+  font-size: .9rem;
+  margin: 1rem auto 0 auto;
+}
+
+h2 {
+  margin-top: 0;
+}
