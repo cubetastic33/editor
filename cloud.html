@@ -10,27 +10,54 @@
   <link rel="shortcut icon" href="editor.png">
 </head>
 <body class="dark">
-<div id="editor" contenteditable></div>
+<div id="editor"></div>
 <div id="overlay"></div>
-<dialog id="login">
+<dialog id="menu">
   <h1>
     Editor on the
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
       <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/>
     </svg>
   </h1>
-  <h2>Login</h2>
   <form id="login-form">
+    <h2>Login</h2>
     <div class="input-form">
       <label for="email">Email:</label>
-      <input type="email" id="email">
+      <input type="email" id="email" required>
       <label for="password">Password:</label>
-      <input type="email" id="password">
+      <input type="password" id="password" required>
     </div>
-    <button type="submit" id="login-button">Login</button>
+    <p id="login-error"></p>
+    <div class="buttons">
+      <button type="button" class="text">Sign up?</button>
+      <button type="submit" id="login-button">Login</button>
+    </div>
   </form>
-  <h2>Settings</h2>
-  <form id="settings">
+  <form id="signup-form" class="hidden">
+    <h2>Sign up</h2>
+    <div class="input-form">
+      <label for="new-email">Email:</label>
+      <input type="email" id="new-email" required>
+      <label for="new-password">Password:</label>
+      <input type="password" id="new-password" required>
+      <label for="confirm-password">Password:</label>
+      <input type="password" id="confirm-password" required>
+    </div>
+    <p id="signup-error"></p>
+    <div class="buttons">
+      <button type="button" class="text">Login?</button>
+      <button type="submit" id="signup-button">Sign up</button>
+    </div>
+  </form>
+  <form id="settings" class="hidden">
+    <div id="account-info">
+      <p>Signed in as <span></span></p>
+      <button id="signout" class="text">Sign out</button>
+    </div>
+    <h2>Keybinds</h2>
+    <p><b>F1</b> <i>or</i> <b>ctrl</b> + <b>,</b>: Toggle this menu</p>
+    <p><b>ctrl</b> + <b>d</b>: Toggle dark theme</p>
+    <h2>Settings</h2>
     <p class="hint">Hint: Try monospace or serif for the browser's default monospace/serif fonts</p>
     <input id="font" type="text" placeholder="Editor Font">
   </form>

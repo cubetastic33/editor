@@ -4,6 +4,10 @@
   margin-top: -.3rem;
 }
 
+.hidden {
+  display: none;
+}
+
 .input-form {
   align-items: center;
   display: grid;
@@ -22,15 +26,46 @@ input {
   padding: .5rem calc(1em + 1px);
 }
 
-#login-button {
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 1rem;
+}
+
+button {
   border: none;
   border-radius: 5px;
   display: block;
   padding: .5rem 1.5rem;
   font-size: .9rem;
-  margin: 1rem auto 0 auto;
+}
+
+.text {
+  background: none;
+  color: var(--foreground);
+  transition: all .2s;
+}
+
+.text:hover {
+  background: #fff2;
+}
+
+#login-error, #signup-error {
+  color: #e53935;
 }
 
 h2 {
   margin-top: 0;
+}
+
+#account-info {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+#signout:focus {
+  outline: none;
 }
