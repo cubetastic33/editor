@@ -33,7 +33,7 @@ async function setAuthView(data, hideLoggedInMenu) {
     document.querySelector('#editor').innerHTML = ''; // Empty the editor
     document.querySelector('#account-info span').textContent = ''; // Empty the user's email
     document.querySelector('#login-form').classList.remove('hidden');
-    document.querySelector('#signup-form').classList.remove('hidden');
+    document.querySelector('#signup-form').classList.add('hidden');
     document.querySelector('#settings').classList.add('hidden');
     document.querySelector('#menu').showModal();
   }
