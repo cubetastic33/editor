@@ -76,6 +76,10 @@ form {
   width: calc(100% - 2em - 2px);
 }
 
+input {
+  transition: border-color .2s;
+}
+
 input:hover {
   border-color: #afafaf;
 }

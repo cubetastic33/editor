@@ -1,10 +1,12 @@
 body {
+  --text-hover: #fff2;
   --toolbar-bg: #000;
   --success: #00E676;
   --error: #EF5350;
 }
 
 body.light {
+  --text-hover: #0002;
   --toolbar-bg: #e0e0e0;
   --success: #099940;
   --error: #FF3D00;
@@ -60,7 +62,7 @@ button {
 }
 
 .text:hover {
-  background: #fff2;
+  background: var(--text-hover);
 }
 
 #login-error, #signup-error {
