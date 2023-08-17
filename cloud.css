@@ -126,7 +126,7 @@ h2 {
   position: fixed;
   bottom: 1rem;
   right: 1rem;
-  transition: opacity .5s;
+  transition: opacity .2s;
 }
 
 #toast.success {
