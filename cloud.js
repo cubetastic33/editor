@@ -106,7 +106,7 @@ async function uploadData() {
     }
   }
   if (errorMessage) showToast(errorMessage, 'error');
-  else showToast('Saved data to cloud!');
+  else showToast('Saved!');
 }
 
 async function downloadData() {
