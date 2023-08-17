@@ -1,3 +1,15 @@
+body {
+  --toolbar-bg: #000;
+  --success: #00E676;
+  --error: #EF5350;
+}
+
+body.light {
+  --toolbar-bg: #e0e0e0;
+  --success: #099940;
+  --error: #FF3D00;
+}
+
 .icon {
   height: 2rem;
   vertical-align: middle;
@@ -68,4 +80,57 @@ h2 {
 
 #signout:focus {
   outline: none;
+}
+
+/*
+  Toolbar
+ */
+
+#toolbar {
+  background: var(--toolbar-bg);
+  border-radius: 10px;
+  display: flex;
+  padding: .25rem;
+  position: fixed;
+  right: 1rem;
+  top: 1rem;
+}
+
+#toolbar button {
+  appearance: none;
+  background: none;
+  color: var(--foreground);
+  padding: .25rem;
+  width: calc(25px + .5rem);
+}
+
+#toolbar button:hover {
+  background: var(--background);
+}
+
+#toolbar svg {
+  height: 20px;
+}
+
+/*
+  Toast
+ */
+
+#toast {
+  background: var(--toolbar-bg);
+  border-radius: 10px;
+  opacity: 0;
+  padding: .75rem 1rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  transition: opacity .5s;
+}
+
+#toast.success {
+  color: var(--success);
+}
+
+#toast.error {
+  color: var(--error);
 }

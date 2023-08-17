@@ -11,12 +11,26 @@
 </head>
 <body class="dark">
 <div id="editor"></div>
-<div id="overlay"></div>
+<div id="toolbar">
+  <button id="upload" title="Upload (Ctrl + S)">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18"/>
+    </svg>
+  </button>
+  <button id="download" title="Download (Ctrl + B)">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
+    </svg>
+  </button>
+</div>
+<div id="toast"></div>
 <dialog id="menu">
   <h1>
     Editor on the
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+         class="icon">
+      <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.25 15a4.5 4.5 0 004.5 4.5H18a3.75 3.75 0 001.332-7.257 3 3 0 00-3.758-3.848 5.25 5.25 0 00-10.233 2.33A4.502 4.502 0 002.25 15z"/>
     </svg>
   </h1>
   <form id="login-form">
@@ -51,7 +65,7 @@
   </form>
   <form id="settings" class="hidden">
     <div id="account-info">
-      <p>Signed in as <span></span></p>
+      <p>Signed in as <span id="account-email"></span></p>
       <button id="signout" class="text">Sign out</button>
     </div>
     <h2>Keybinds</h2>
