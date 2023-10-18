@@ -1,11 +1,13 @@
 body {
   --background: #141414;
   --foreground: #ffffff;
+  --close: #333;
 }
 
 body.light {
   --background: #ffffff;
   --foreground: #000000;
+  --close: #bbb;
 }
 
 body {
@@ -26,6 +28,10 @@ dialog {
   max-width: 50vw;
 }
 
+#header {
+  position: relative;
+}
+
 dialog::backdrop {
   backdrop-filter: blur(5px);
 }
@@ -38,6 +44,28 @@ dialog h1 {
 
 dialog h2 {
   font-weight: 450;
+}
+
+#close {
+  background: var(--close);
+  color: var(--foreground);
+  border: 0;
+  border-radius: 50%;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.3em 0.5em;
+  position: absolute;
+  transition: all .2s;
+  top: .25rem;
+  right: 0;
+}
+
+#close:focus {
+  outline: none;
+}
+
+#close:hover {
+  background: var(--background);
 }
 
 #editor {

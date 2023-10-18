@@ -4,6 +4,7 @@ const $ = id => document.getElementById(id);
 const $toast = $('toast');
 const $editor = $('editor');
 const $menu = $('menu');
+const $close = $('close');
 const $loginForm = $('login-form');
 const $signupForm = $('signup-form');
 let globalInterval; // Keep track of the running setInterval
@@ -35,6 +36,7 @@ async function setAuthView(data, hideLoggedInMenu) {
     // The user is logged in
     $loginForm.classList.add('hidden');
     $signupForm.classList.add('hidden');
+    $close.classList.remove('hidden');
     $('settings').classList.remove('hidden');
     $('account-email').textContent = data.session.user.email;
     $editor.setAttribute('contenteditable', 'true');
@@ -48,6 +50,7 @@ async function setAuthView(data, hideLoggedInMenu) {
     $('account-email').textContent = ''; // Empty the user's email
     $loginForm.classList.remove('hidden');
     $signupForm.classList.add('hidden');
+    $close.classList.add('hidden');
     $('settings').classList.add('hidden');
     $menu.showModal();
   }
@@ -226,11 +229,19 @@ window.addEventListener('keydown', async e => {
   }
 });
 
+$close.addEventListener('click', async () => {
+  // Toggle menu visibility
+  const { data } = await client.auth.getSession(); // Only allow them to close the menu if they're logged in
+  if ($menu.open && data.session) $menu.close();
+  else await setAuthView(data, false);
+});
+
 // Settings
 const $font = $('font');
 $font.value = localStorage.getItem('font');
 $editor.style.fontFamily = localStorage.getItem('font');
 
+// Close button on dialog
 $('settings').addEventListener('submit', evt => {
   evt.preventDefault();
   localStorage.setItem('font', $font.value);

@@ -39,6 +39,14 @@ window.addEventListener('keydown', e => {
   }
 });
 
+// Close button on dialog
+document.querySelector('#close').addEventListener('click', () => {
+  // Close the menu
+  document.querySelector('#help').close();
+  // Don't show the menu on startup
+  localStorage.setItem('visited', 'true');
+});
+
 // Settings
 document.querySelector('#font').value = localStorage.getItem('font');
 document.querySelector('#editor').style.fontFamily = localStorage.getItem('font');
