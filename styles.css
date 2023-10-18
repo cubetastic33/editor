@@ -28,6 +28,12 @@ dialog {
   max-width: 50vw;
 }
 
+@media only screen and (max-width: 800px) {
+  dialog {
+    max-width: 80vw;
+  }
+}
+
 #header {
   position: relative;
 }
@@ -74,6 +80,10 @@ dialog h2 {
   min-height: calc(100vh - 2em);
   padding: 1em;
   word-wrap: break-word;
+}
+
+#editor img {
+  max-width: 100%;
 }
 
 #editor:focus {
