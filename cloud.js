@@ -132,6 +132,12 @@ async function downloadData() {
 
 $('download').addEventListener('click', downloadData);
 $('upload').addEventListener('click', uploadData);
+$('open-menu').addEventListener('click', async () => {
+  // Toggle menu visibility
+  const { data } = await client.auth.getSession(); // Only allow them to close the menu if they're logged in
+  if ($menu.open && data.session) $menu.close();
+  else await setAuthView(data, false);
+});
 
 (async () => {
   const { data, error } = await client.auth.getSession();

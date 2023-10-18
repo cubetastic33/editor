@@ -73,6 +73,7 @@ dialog h2 {
   font-size: 1.2em;
   min-height: calc(100vh - 2em);
   padding: 1em;
+  word-wrap: break-word;
 }
 
 #editor:focus {
